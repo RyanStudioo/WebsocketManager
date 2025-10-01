@@ -12,6 +12,7 @@ class WebSocketClient(WebSocketManager):
 
     async def start(self):
         async with websockets.connect(self.link) as websocket:
+            self.websocket = websocket
             while True:
                 message = await websocket.recv()
                 if not message:
